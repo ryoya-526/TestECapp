@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div class="container-fluid bg-light" style="min-height: 100vh;">
+    <!-- Main section with light background -->
+    <section class="bg-light">
+        <div class="container py-5">
+            <!-- Category selection buttons -->
+
+            <div class="rounded-circle d-flex align-items-center justify-content-center mb-4">
+                @for (category of categoryList; track categoryList) {
+                <button class="btn btn-outline-primary mx-2">{{ category }}</button>}
+            </div>
+            <!-- <div class="rounded-circle d-flex align-items-center justify-content-center mb-4">
+                <button @for ="let item of categoryList; let i = index; trackBy: trackByIndex"
+                 class="btn btn-outline-primary mx-2">
+                    {{ item}}
+                </button>
+            </div> -->
+
+            <div class="row">
+                <!-- Display product cards if products are found -->
+                <ng-container>
+                    <div class="col-md-12 col-lg-3 pt-2 mb-4 mb-lg-0">
+
+                    </div>
+
+                    <app-product-card ></app-product-card>
+                    <!-- @for (item of productList; track productList) {
+                    <app-product-card></app-product-card>} -->
+                </ng-container>
+            </div>
+        </div>
+    </section>
+</div>
