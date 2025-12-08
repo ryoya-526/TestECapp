@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../app/models/product.model';
 import { ProductCard } from '../product-card/product-card';
+import { throwError } from 'rxjs';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -9,7 +11,7 @@ import { ProductCard } from '../product-card/product-card';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class HomeComponent {
+export class Home {
 
   public categoryList: string[] = ['Fridge', 'Washer', 'Kitchen', 'Vacuum', 'Climate', 'TV', 'Other'];
   public productList: Product[] = [
@@ -30,7 +32,23 @@ export class HomeComponent {
   { productId: 15, rating: 5, productName: 'Compact TV', category: 'TV', price: 300, isSale: true, releaseDate: '2023-01-10', availableQty: 5, imageUrl: 'assets/images/15.jpg' }
 ];
 
+ constructor() {
+  this.productList = this.markNewProducts(this.productList);
+ }
+
   public trackByIndex(index: number, item: any): number {
     return index;
+  }
+
+  private markNewProducts(Productlist: Product[]):  Product[] {
+    const referenceDate = new Date('2024-04-01');
+    const threeMonthAgo = new Date(referenceDate);
+    threeMonthAgo.setMonth(threeMonthAgo.getMonth() - 3);
+
+    return this.productList.map(product => {
+      const releaseDate = new Date(product.releaseDate);
+      product.isNew = releaseDate > threeMonthAgo;
+      return product;
+    });
   }
 }

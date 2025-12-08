@@ -1,4 +1,42 @@
 <div class="card">
+    <!-- Display 'Sale' badge if the product is on sale -->
+     @if (Product.isSale) {
+    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+        style="width: 35px; height: 35px; position: absolute; left: 0;">
+        <p class="text-white mb-0 small">Sale</p>
+    </div>
+    }
+
+    <!-- Display 'New' badge if the product is new -->
+     @if (Product.isNew === true) {
+    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+        style="width: 35px; height: 35px; position: absolute; left: 0;">
+        <p class="text-white mb-0 small">New</p>
+    </div>
+    }
     <!-- Display product image -->
-    <img src="../../assets/images/1.jpg" class="card-img-top" alt="French Door Fridge" />
+    <img [src]="Product.imageUrl" class="card-img-top" [alt]="Product.productName" />
+    <div class="d-flex justify-content-between mb-3">
+            <h5 class="mb-0">{{Product.productName}}</h5>
+            <h5 class="text-dark mb-0">${{Product.price}}</h5>
+    </div>
+    <!-- Display product rating as stars and add to cart button based on availability -->
+    <div class="d-flex justify-content-between mb-0">
+        <div class="text-warning">
+            <!-- Display rating stars -->
+            <i [class]="Product.rating > 0 ? 'fa fa-star' : 'fa fa-star-o'"></i>
+            <i [class]="Product.rating > 1 ? 'fa fa-star' : 'fa fa-star-o'"></i>
+            <i [class]="Product.rating > 2 ? 'fa fa-star' : 'fa fa-star-o'"></i>
+            <i [class]="Product.rating > 3 ? 'fa fa-star' : 'fa fa-star-o'"></i>
+            <i [class]="Product.rating > 4 ? 'fa fa-star' : 'fa fa-star-o'"></i>
+            <!-- <i [class]="Product.rating > 5 ? 'fa fa-star' : 'fa fa-star-o'"></i> -->
+        </div>
+        <!-- Display 'Out of Stock' button -->
+         @if (Product.availableQty === 0) {
+        <button type="button" class="btn btn-secondary">在庫切れ</button>
+        }
+        <!-- Display 'Add to Cart' button -->
+         @if (Product.availableQty > 0) {
+        <button type="button" class="btn btn-success">カートに追加</button>
+         }
 </div>
