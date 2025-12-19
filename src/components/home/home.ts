@@ -1,10 +1,16 @@
-import { Component, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../app/models/product.model';
 import { ProductCard } from '../product-card/product-card';
-import { throwError } from 'rxjs';
 import { TestComponent } from '../test/test';
 
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, ProductCard, TestComponent],
+  templateUrl: './home.html',
+  styleUrl: './home.css',
+})
 export class Home {
   public categoryList: string[] = [
     'Fridge',
