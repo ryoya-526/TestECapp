@@ -1,0 +1,7 @@
+{
+  // 保存時に自動フォーマット
+  "editor.formatOnSave": true,
+
+  // フォーマッタは Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

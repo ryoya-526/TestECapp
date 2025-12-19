@@ -1,74 +1,76 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-        <!-- Left elements -->
-        <div class="d-flex align-items-center">
-            <!-- Brand name -->
-            <a class="navbar-brand" href="#">
-                Electronics Store
-            </a>
-            <!-- Links -->
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Viewed</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Orders</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Right elements -->
-        <div class="d-flex align-items-center">
-            <!-- Cart Icon -->
-            <a class="text-white me-3" href="#">
-                <i class="fa fa-shopping-cart"></i>
-            </a>
-            <!-- Cart Dropdown Menu -->
-            <div class="dropdown-menu dropdown-menu-end" style="position: absolute; right: 13px; top: 60px;"
-                aria-labelledby="navbarDropdownMenuAvatar">
-                <div class="row">
-                    <!-- Cart Header -->
-                    <div class="col-8">
-                        <h6>Cart Items</h6>
-                    </div>
-                    <div class="col-4 text-end">
-                        <i class="fa fa-close p-2"></i>
-                    </div>
-                </div>
-
-                <!-- Cart Items Table -->
-                <table class="table table-sm">
-                    <tbody>
-                        <!-- Display each cart item -->
-                        <tr>
-                            <td>
-                                <div class="rounded"
-                                    style="background-image: url(); width: 60px; height: 60px; background-size: cover;">
-                                </div>
-                            </td>
-                            <td class="align-middle text-left">French Door Fridge</td>
-                            <td class="align-middle text-right">$2200</td>
-                            <td class="align-middle text-center">
-                                <a href="#" data-toggle="modal" data-title="Delete your product?">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <!-- Display total quantity and price -->
-                        <tr>
-                            <td colspan="2" class="align-middle text-left"><strong>Quantity</strong></td>
-                            <td colspan="2" class="align-middle text-right">1</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="align-middle text-left"><strong>Price</strong></td>
-                            <td colspan="2" class="align-middle text-right">$2200</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Left elements -->
+    <div class="d-flex align-items-center">
+      <!-- Brand name -->
+      <a class="navbar-brand" href="#"> Electronics Store </a>
+      <!-- Links -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Viewed</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Orders</a>
+        </li>
+      </ul>
     </div>
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Cart Icon -->
+      <a class="text-white me-3" href="#">
+        <i class="fa fa-shopping-cart"></i>
+      </a>
+      <!-- Cart Dropdown Menu -->
+      <div
+        class="dropdown-menu dropdown-menu-end"
+        style="position: absolute; right: 13px; top: 60px"
+        aria-labelledby="navbarDropdownMenuAvatar"
+      >
+        <div class="row">
+          <!-- Cart Header -->
+          <div class="col-8">
+            <h6>Cart Items</h6>
+          </div>
+          <div class="col-4 text-end">
+            <i class="fa fa-close p-2"></i>
+          </div>
+        </div>
+
+        <!-- Cart Items Table -->
+        <table class="table table-sm">
+          <tbody>
+            <!-- Display each cart item -->
+            <tr>
+              <td>
+                <div
+                  class="rounded"
+                  style="background-image: url(); width: 60px; height: 60px; background-size: cover"
+                ></div>
+              </td>
+              <td class="align-middle text-left">French Door Fridge</td>
+              <td class="align-middle text-right">$2200</td>
+              <td class="align-middle text-center">
+                <a href="#" data-toggle="modal" data-title="Delete your product?">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <!-- Display total quantity and price -->
+            <tr>
+              <td colspan="2" class="align-middle text-left"><strong>Quantity</strong></td>
+              <td colspan="2" class="align-middle text-right">1</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="align-middle text-left"><strong>Price</strong></td>
+              <td colspan="2" class="align-middle text-right">$2200</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>

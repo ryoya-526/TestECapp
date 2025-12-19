@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+  <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%">
+    <thead>
+      <tr>
+        <th>ラベル</th>
+        <th>品名</th>
+        <th>単価</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+
+    <tbody formArrayName="rows">
+      @for (row of rows.controls; track $index) {
+        <tr [formGroupName]="$index">
+          <!-- ラベル（FormControlの値を表示しているだけ） -->
+          <td>
+            {{ row.get('label')?.value }} - {{ $index + 1 }}
+            <!-- 画面に出さないけど値として保持したいならhidden -->
+            <input type="hidden" formControlName="id" />
+          </td>
+
+          <td><input formControlName="name" placeholder="例：りんご" /></td>
+          <td><input type="number" formControlName="price" /></td>
+          <td><input type="number" formControlName="qty" /></td>
+
+          <!-- 小計はフォームに持たずに計算表示（おすすめ） -->
+          <td>{{ rowTotal($index) }}</td>
+
+          <td>
+            <button type="button" (click)="removeRow($index)">削除</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div style="margin-top: 12px; display: flex; gap: 8px; align-items: center">
+    <button type="button" (click)="addRow()">＋ 追加</button>
+    <div style="margin-left: auto">
+      合計：<b>{{ grandTotal() }}</b>
+    </div>
+  </div>
+</form>
