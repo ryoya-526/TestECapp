@@ -1,4 +1,39 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <fieldset style="border: 1px solid #ddd; padding: 12px; margin-bottom: 16px">
+    <legend style="padding: 0 8px">選択項目</legend>
+    <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap">
+      <label style="display: grid; gap: 4px">
+        配列から選択
+        <select formControlName="category">
+          <option value="" disabled>選択してください</option>
+          @for (option of categoryOptions; track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+      </label>
+
+      <label style="display: grid; gap: 4px">
+        APIから選択
+        <select formControlName="apiOption">
+          <option value="" disabled>
+            @if (isLoadingApiOptions) {
+              読み込み中...
+            } @else {
+              選択してください
+            }
+          </option>
+          @for (option of apiOptions; track option.id) {
+            <option [value]="option.id">{{ option.label }}</option>
+          }
+        </select>
+      </label>
+
+      @if (apiError) {
+        <p style="color: #c00; margin: 0">{{ apiError }}</p>
+      }
+    </div>
+  </fieldset>
+
   <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%">
     <thead>
       <tr>
@@ -38,6 +73,7 @@
 
   <div style="margin-top: 12px; display: flex; gap: 8px; align-items: center">
     <button type="button" (click)="addRow()">＋ 追加</button>
+    <button type="submit">送信</button>
     <div style="margin-left: auto">
       合計：<b>{{ grandTotal() }}</b>
     </div>

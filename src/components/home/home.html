@@ -3,7 +3,16 @@
   <section class="bg-light">
     <div class="container py-5">
       <!-- Category selection buttons -->
-      <app-test></app-test>
+      <app-test
+        (formValueChange)="onChildFormValueChange($event)"
+        (formSubmit)="onChildFormSubmit($event)"
+      ></app-test>
+      <div style="margin: 16px 0; padding: 12px; background: #fff; border: 1px solid #eee">
+        <h6>子フォームから受け取った値</h6>
+        <pre style="margin: 0">{{ latestChildFormValue | json }}</pre>
+        <h6 style="margin-top: 12px">送信時の値</h6>
+        <pre style="margin: 0">{{ latestChildSubmitValue | json }}</pre>
+      </div>
       <div class="d-flex align-items-center justify-content-center mb-4">
         @for (category of categoryList; track category) {
           <button
