@@ -1,10 +1,16 @@
-import { Component, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../app/models/product.model';
 import { ProductCard } from '../product-card/product-card';
-import { throwError } from 'rxjs';
 import { TestComponent } from '../test/test';
 
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, ProductCard, TestComponent],
+  templateUrl: './home.html',
+  styleUrl: './home.css',
+})
 export class Home {
   public categoryList: string[] = [
     'Fridge',
@@ -185,6 +191,8 @@ export class Home {
 
   public filteredProducts: Product[] = [];
   public selectedCategory: string = '';
+  public latestChildFormValue: unknown = null;
+  public latestChildSubmitValue: unknown = null;
 
   constructor() {
     this.productList = this.markNewProducts(this.productList);
@@ -215,5 +223,13 @@ export class Home {
       (this, (this.selectedCategory = category));
       this.filteredProducts = this.productList.filter((product) => product.category === category);
     }
+  }
+
+  public onChildFormValueChange(value: unknown): void {
+    this.latestChildFormValue = value;
+  }
+
+  public onChildFormSubmit(value: unknown): void {
+    this.latestChildSubmitValue = value;
   }
 }
